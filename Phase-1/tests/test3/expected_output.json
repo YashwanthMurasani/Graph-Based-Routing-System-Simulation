@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "possible": true,
+      "minimum_distance": 730.0,
+      "path": [0, 1, 2, 3, 4, 5],
+      "processing_time_ms": 0.12
+    },
+    {
+      "id": 2,
+      "possible": true,
+      "minimum_time": 41.0,
+      "path": [0, 3, 4, 5],
+      "processing_time_ms": 0.15
+    },
+    {
+      "id": 3,
+      "nodes": [3, 0],
+      "processing_time_ms": 0.08
+    },
+    {
+      "done": true,
+      "processing_time_ms": 0.03
+    },
+    {
+      "done": true,
+      "processing_time_ms": 0.03
+    },
+    {
+      "id": 4,
+      "nodes": [3, 0],
+      "processing_time_ms": 0.09
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "meta": { "id": "medium_graph", "nodes": 6, "description": "Medium graph with mixed road types" },
+  "nodes": [
+    { "id": 0, "lat": 19.07, "lon": 72.87, "pois": ["restaurant"] },
+    { "id": 1, "lat": 19.071, "lon": 72.872, "pois": ["hospital"] },
+    { "id": 2, "lat": 19.072, "lon": 72.874, "pois": ["school"] },
+    { "id": 3, "lat": 19.073, "lon": 72.876, "pois": ["restaurant"] },
+    { "id": 4, "lat": 19.074, "lon": 72.878, "pois": [] },
+    { "id": 5, "lat": 19.075, "lon": 72.880, "pois": ["park"] }
+  ],
+  "edges": [
+    { "id": 200, "u": 0, "v": 1, "length": 100.0, "average_time": 5.0, "speed_profile": [], "oneway": false, "road_type": "primary" },
+    { "id": 201, "u": 1, "v": 2, "length": 150.0, "average_time": 7.0, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 202, "u": 2, "v": 3, "length": 120.0, "average_time": 6.0, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 203, "u": 3, "v": 4, "length": 160.0, "average_time": 8.0, "speed_profile": [], "oneway": false, "road_type": "local" },
+    { "id": 204, "u": 4, "v": 5, "length": 200.0, "average_time": 10.0, "speed_profile": [], "oneway": false, "road_type": "expressway" },
+    { "id": 205, "u": 0, "v": 3, "length": 250.0, "average_time": 12.0, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 206, "u": 1, "v": 4, "length": 300.0, "average_time": 15.0, "speed_profile": [], "oneway": false, "road_type": "primary" }
+  ]
+}

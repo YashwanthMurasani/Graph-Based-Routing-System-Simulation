@@ -1,0 +1,23 @@
+{
+  "meta": { "id": "qset_medium" },
+  "events": [
+    { "type": "shortest_path", "id": 1, "source": 0, "target": 5, "mode": "distance",
+      "constraints": { "forbidden_nodes": [], "forbidden_road_types": [] } },
+
+    { "type": "shortest_path", "id": 2, "source": 0, "target": 5, "mode": "time",
+      "constraints": { "forbidden_nodes": [], "forbidden_road_types": ["primary"] } },
+
+    { "type": "knn", "id": 3, "poi": "restaurant",
+      "query_point": { "lat": 19.0725, "lon": 72.8745 },
+      "k": 2, "metric": "euclidean" },
+
+    { "type": "remove_edge", "edge_id": 205 },
+
+    { "type": "modify_edge", "edge_id": 205,
+      "patch": { "length": 300.0, "average_time": 14.0 } },
+
+    { "type": "knn", "id": 4, "poi": "restaurant",
+      "query_point": { "lat": 19.0725, "lon": 72.8745 },
+      "k": 2, "metric": "shortest_path" }
+  ]
+}

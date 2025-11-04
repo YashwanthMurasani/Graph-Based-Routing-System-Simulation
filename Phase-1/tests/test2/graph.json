@@ -1,0 +1,28 @@
+{
+  "meta": { "id": "large_graph", "nodes": 10 },
+  "nodes": [
+    { "id": 0, "lat": 19.07,  "lon": 72.87,  "pois": ["restaurant"] },
+    { "id": 1, "lat": 19.071, "lon": 72.872, "pois": ["mall"] },
+    { "id": 2, "lat": 19.072, "lon": 72.874, "pois": ["hospital"] },
+    { "id": 3, "lat": 19.073, "lon": 72.876, "pois": [] },
+    { "id": 4, "lat": 19.074, "lon": 72.878, "pois": ["school"] },
+    { "id": 5, "lat": 19.075, "lon": 72.880, "pois": ["restaurant"] },
+    { "id": 6, "lat": 19.076, "lon": 72.882, "pois": [] },
+    { "id": 7, "lat": 19.077, "lon": 72.884, "pois": ["hospital"] },
+    { "id": 8, "lat": 19.078, "lon": 72.886, "pois": ["restaurant"] },
+    { "id": 9, "lat": 19.079, "lon": 72.888, "pois": [] }
+  ],
+  "edges": [
+    { "id": 300, "u": 0, "v": 1, "length": 100, "average_time": 5, "speed_profile": [], "oneway": false, "road_type": "primary" },
+    { "id": 301, "u": 1, "v": 2, "length": 110, "average_time": 6, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 302, "u": 2, "v": 3, "length": 120, "average_time": 6, "speed_profile": [], "oneway": false, "road_type": "local" },
+    { "id": 303, "u": 3, "v": 4, "length": 130, "average_time": 7, "speed_profile": [], "oneway": false, "road_type": "local" },
+    { "id": 304, "u": 4, "v": 5, "length": 140, "average_time": 7, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 305, "u": 5, "v": 6, "length": 150, "average_time": 8, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 306, "u": 6, "v": 7, "length": 160, "average_time": 8, "speed_profile": [], "oneway": false, "road_type": "local" },
+    { "id": 307, "u": 7, "v": 8, "length": 170, "average_time": 9, "speed_profile": [], "oneway": false, "road_type": "expressway" },
+    { "id": 308, "u": 8, "v": 9, "length": 180, "average_time": 9, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 309, "u": 0, "v": 5, "length": 400, "average_time": 18, "speed_profile": [], "oneway": false, "road_type": "expressway" },
+    { "id": 310, "u": 3, "v": 8, "length": 500, "average_time": 25, "speed_profile": [], "oneway": false, "road_type": "secondary" }
+  ]
+}

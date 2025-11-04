@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "id": "sample_test_1",
+    "nodes": 5,
+    "description": "Tiny map for Phase-1 testing"
+  },
+  "nodes": [
+    { "id": 0, "lat": 19.0700, "lon": 72.8700, "pois": ["restaurant"] },
+    { "id": 1, "lat": 19.0710, "lon": 72.8710, "pois": ["hospital"] },
+    { "id": 2, "lat": 19.0720, "lon": 72.8720, "pois": ["restaurant"] },
+    { "id": 3, "lat": 19.0730, "lon": 72.8730, "pois": ["school"] },
+    { "id": 4, "lat": 19.0740, "lon": 72.8740, "pois": [] }
+  ],
+  "edges": [
+    { "id": 100, "u": 0, "v": 1, "length": 100.0, "average_time": 5.0, "speed_profile": [40,42,39,45,38,40,42,41,40,43,45,39,38,40,41,42,39,40,41,43,40,41,39,42,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40], "oneway": false, "road_type": "primary" },
+    { "id": 101, "u": 1, "v": 2, "length": 120.0, "average_time": 6.0, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 102, "u": 2, "v": 3, "length": 80.0,  "average_time": 4.0, "speed_profile": [], "oneway": false, "road_type": "local" },
+    { "id": 103, "u": 3, "v": 4, "length": 150.0, "average_time": 8.0, "speed_profile": [], "oneway": false, "road_type": "secondary" },
+    { "id": 104, "u": 0, "v": 4, "length": 400.0, "average_time": 20.0, "speed_profile": [], "oneway": false, "road_type": "expressway" }
+  ]
+}
