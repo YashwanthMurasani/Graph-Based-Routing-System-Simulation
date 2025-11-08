@@ -5,21 +5,18 @@
 #include <cmath>
 #include <iostream>
 
-// --------------------- Travel Time Calculation ---------------------
-
 double ShortestPathSolver::travel_time_on_edge(const Edge& e, double t_start) const {
-    // If no profile, use average time
     if (e.speed_profile.empty())
         return e.average_time_s;
 
-    const int SLOT_SECS = 900; // 15 min = 900 sec
+    const int SLOT_SECS = 900; 
     double remaining = e.length_m;
     double t_current = t_start;
 
     for (int iter = 0; iter < 1000 && remaining > 1e-6; ++iter) {
-        int slot = std::min(95, int(t_current / SLOT_SECS));
+        int slot = int(t_current / SLOT_SECS)%96;
         double v = e.speed_profile[slot];
-        if (v <= 1e-9) v = std::max(0.1, e.length_m / e.average_time_s); // fallback
+        if (v <= 1e-9) continue; 
         double slot_end = (slot + 1) * SLOT_SECS;
         double time_left = slot_end - t_current;
         double dist_possible = v * time_left;
@@ -37,8 +34,6 @@ double ShortestPathSolver::travel_time_on_edge(const Edge& e, double t_start) co
     return t_current - t_start;
 }
 
-// --------------------- Path Reconstruction ---------------------
-
 std::vector<int> ShortestPathSolver::reconstruct_path(
     int src, int tgt, const std::unordered_map<int, int>& parent) const
 {
@@ -52,8 +47,6 @@ std::vector<int> ShortestPathSolver::reconstruct_path(
     std::reverse(path.begin(), path.end());
     return path;
 }
-
-// --------------------- Distance-based Dijkstra ---------------------
 
 PathResult ShortestPathSolver::shortest_path_distance(
     int src, int tgt, const Constraints& cons)
@@ -98,8 +91,6 @@ PathResult ShortestPathSolver::shortest_path_distance(
     res.path = reconstruct_path(src, tgt, parent);
     return res;
 }
-
-// --------------------- Time-based Dijkstra (Time-dependent) ---------------------
 
 PathResult ShortestPathSolver::shortest_path_time(
     int src, int tgt, const Constraints& cons, double start_time)

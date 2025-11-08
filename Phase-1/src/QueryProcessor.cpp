@@ -3,14 +3,12 @@
 #include <iostream>
 #include <unordered_set>
 
-// --------------------- Process Query/Event ---------------------
 
 nlohmann::json QueryProcessor::process(const nlohmann::json& ev) {
     nlohmann::json out;
 
     std::string type = ev["type"];
 
-    // ---------- 1. REMOVE EDGE ----------
     if (type == "remove_edge") {
         int eid = ev["edge_id"];
         bool ok = G.remove_edge(eid);
@@ -18,7 +16,6 @@ nlohmann::json QueryProcessor::process(const nlohmann::json& ev) {
         return out;
     }
 
-    // ---------- 2. MODIFY EDGE ----------
     if (type == "modify_edge") {
         int eid = ev["edge_id"];
         nlohmann::json patch = ev.contains("patch") ? ev["patch"] : nlohmann::json::object();
@@ -27,7 +24,6 @@ nlohmann::json QueryProcessor::process(const nlohmann::json& ev) {
         return out;
     }
 
-    // ---------- 3. SHORTEST PATH ----------
     if (type == "shortest_path") {
         int qid = ev["id"];
         int src = ev["source"];
@@ -63,7 +59,6 @@ nlohmann::json QueryProcessor::process(const nlohmann::json& ev) {
         return out;
     }
 
-    // ---------- 4. KNN QUERY ----------
     if (type == "knn") {
         int qid = ev["id"];
         std::string poi = ev["poi"];
@@ -83,7 +78,6 @@ nlohmann::json QueryProcessor::process(const nlohmann::json& ev) {
         return out;
     }
 
-    // ---------- Unknown type ----------
     out["error"] = "Unknown query type";
     return out;
 }

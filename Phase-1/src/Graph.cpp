@@ -4,10 +4,7 @@
 #include <cmath>
 #include <iostream>
 
-// --------------------- Build Graph from JSON ---------------------
-
-Graph Graph::from_json(const std::string& filename) {
-    Graph G;
+void Graph::from_json(const std::string& filename) {
     nlohmann::json j = Utils::load_json(filename);
 
     // Load nodes
@@ -19,7 +16,7 @@ Graph Graph::from_json(const std::string& filename) {
         if (node.contains("pois")) {
             pois = node["pois"].get<std::vector<std::string>>();
         }
-        G.nodes[id] = Node(id, lat, lon, pois);
+        nodes[id] = Node(id, lat, lon, pois);
     }
 
     // Load edges
@@ -36,19 +33,16 @@ Graph Graph::from_json(const std::string& filename) {
         if (edge.contains("speed_profile"))
             sp = edge["speed_profile"].get<std::vector<double>>();
 
-        G.edges[id] = Edge(id, u, v, len, avg_t, sp, oneway, type);
+        edges[id] = Edge(id, u, v, len, avg_t, sp, oneway, type);
 
         // Add adjacency (u → v)
-        G.adj[u].push_back({v, id});
+        adj[u].push_back({v, id});
         if (!oneway) {
-            G.adj[v].push_back({u, id});
+            adj[v].push_back({u, id});
         }
     }
-
-    return G;
+    return ;
 }
-
-// --------------------- Edge Removal ---------------------
 
 bool Graph::remove_edge(int edge_id) {
     auto it = edges.find(edge_id);
@@ -61,7 +55,6 @@ bool Graph::remove_edge(int edge_id) {
     return true;
 }
 
-// --------------------- Edge Modification / Restoration ---------------------
 
 bool Graph::modify_edge(int edge_id, const nlohmann::json& patch) {
     // If edge exists
@@ -94,7 +87,6 @@ bool Graph::modify_edge(int edge_id, const nlohmann::json& patch) {
         return true;
     }
 
-    // If edge was removed earlier and we have its backup
     if (history.find(edge_id) != history.end()) {
         Edge e = history[edge_id];
         if (!patch.empty()) {

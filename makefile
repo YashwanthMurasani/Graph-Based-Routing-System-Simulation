@@ -1,7 +1,3 @@
-# -------------------------------
-#   Phase-1 Makefile (Improved)
-# -------------------------------
-
 CXX = g++
 CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -IPhase-1/include
 SRC_DIR = Phase-1/src
@@ -16,10 +12,6 @@ OBJS = $(OBJ_DIR)/Graph.o \
 
 TARGET = phase1
 
-# -------------------------------
-#   Build Targets
-# -------------------------------
-
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
@@ -31,9 +23,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# -------------------------------
-#   Run predefined tests
-# -------------------------------
 
 run-test1: $(TARGET)
 	./phase1 $(TEST_DIR)/test1/graph.json $(TEST_DIR)/test1/queries.json $(TEST_DIR)/test1/output.json

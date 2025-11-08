@@ -19,7 +19,7 @@ public:
     Graph() = default;
 
     // ---------- Construction ----------
-    static Graph from_json(const std::string& filename);
+    void from_json(const std::string& filename);
 
     // ---------- Updates ----------
     bool remove_edge(int edge_id);                           // disable
