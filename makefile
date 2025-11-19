@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -O2 -Wall -Wextra -IPhase-1/include
+CXXFLAGS = -std=c++17 -g -O2 -Wall -Wextra -IPhase-1/include
 SRC_DIR = Phase-1/src
 OBJ_DIR = Phase-1/build
 TEST_DIR = Phase-1/tests
@@ -17,7 +17,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-	@echo "✅ Build complete! Run './phase1 <graph.json> <queries.json> <output.json>'"
+	@echo "Build complete!"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
@@ -36,12 +36,8 @@ compare-test1:
 compare-test2:
 	@diff -u <(jq --sort-keys . $(TEST_DIR)/test2/expected_output.json) <(jq --sort-keys . $(TEST_DIR)/test2/output.json) || true
 
-# -------------------------------
-#   Clean
-# -------------------------------
-
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
-	@echo "🧹 Cleaned build files!"
+	@echo "Cleaned build files!"
 
 .PHONY: all clean run-test1 run-test2 compare-test1 compare-test2

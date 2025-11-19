@@ -20,4 +20,4 @@ public:
     nlohmann::json process(const nlohmann::json& ev);
 };
 
-#endif 
+#endif // QUERY_PROCESSOR_HPP

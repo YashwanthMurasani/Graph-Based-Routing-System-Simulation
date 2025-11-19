@@ -17,16 +17,20 @@ struct Constraints {
 
 struct PathResult {
     bool possible = false;
-    double cost = 0.0;              
+    double cost = 0.0;              // distance (m) or time (s)
     std::vector<int> path;
 };
+
+// ------------------- Shortest Path Solver -------------------
 
 class ShortestPathSolver {
 private:
     const Graph& G;
 
+    // Internal helper to compute time-dependent edge travel time
     double travel_time_on_edge(const Edge& e, double t_start) const;
 
+    // Helper to reconstruct the path from parent map
     std::vector<int> reconstruct_path(
         int src, int tgt, const std::unordered_map<int, int>& parent) const;
 
@@ -40,4 +44,4 @@ public:
         int src, int tgt, const Constraints& cons = {}, double start_time = 0.0);
 };
 
-#endif 
+#endif // SHORTEST_PATH_HPP

@@ -6,14 +6,14 @@
 
 struct Edge {
     int id;
-    int u;                 //source
-    int v;                 //destination
-    double length_m;       
-    double average_time_s; 
-    std::vector<double> speed_profile; 
-    bool oneway;           
-    std::string road_type; 
-    bool enabled;          
+    int u;                 // source node id
+    int v;                 // destination node id
+    double length_m;       // in meters
+    double average_time_s; // in seconds
+    std::vector<double> speed_profile; // 96 × 15-min slot speeds (m/s)
+    bool oneway;           // true = u->v only
+    std::string road_type; // primary, secondary, etc.
+    bool enabled;          // false when edge removed
 
     Edge() = default;
     Edge(int _id, int _u, int _v, double _len, double _avg_t, 
@@ -23,4 +23,4 @@ struct Edge {
           speed_profile(_profile), oneway(_oneway), road_type(_type), enabled(true) {}
 };
 
-#endif
+#endif // EDGE_HPP

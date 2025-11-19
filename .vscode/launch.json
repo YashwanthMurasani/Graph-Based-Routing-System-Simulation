@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "WSL Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/phase1",
+            "args": [
+                "${workspaceFolder}/Phase-1/tests/test1/graph.json",
+                "${workspaceFolder}/Phase-1/tests/test1/queries.json",
+                "${workspaceFolder}/Phase-1/tests/test1/output.json"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Phase-1",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
