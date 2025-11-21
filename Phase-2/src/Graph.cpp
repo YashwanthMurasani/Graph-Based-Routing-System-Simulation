@@ -1,4 +1,4 @@
-#include "Graph.hpp"
+s#include "Graph.hpp"
 #include "Utils.hpp"
 #include <fstream>
 #include <cmath>
@@ -23,15 +23,15 @@ void Graph::from_json(const nlohmann::json& filename) {
         int u = edge["u"];
         int v = edge["v"];
         double len = edge["length"];
-        double avg_t = edge["average_time"];
+        // double avg_t = edge["average_time"];
         bool oneway = edge["oneway"];
-        std::string type = edge["road_type"];
+        // std::string type = edge["road_type"];
 
-        std::vector<double> sp;
-        if (edge.contains("speed_profile"))
-            sp = edge["speed_profile"].get<std::vector<double>>();
+        // std::vector<double> sp;
+        // if (edge.contains("speed_profile"))
+        //     sp = edge["speed_profile"].get<std::vector<double>>();
 
-        edges[id] = Edge(id, u, v, len, avg_t, sp, oneway, type);
+        edges[id] = Edge(id, u, v, len);
 
         // Add adjacency (u → v)
         adj[u].push_back({v, id});
@@ -109,8 +109,6 @@ bool Graph::modify_edge(int edge_id, const nlohmann::json& patch) {
     return false;
 }
 
-// --------------------- Access Helpers ---------------------
-
 const Node* Graph::get_node(int id) const {
     auto it = nodes.find(id);
     return (it != nodes.end()) ? &it->second : nullptr;
@@ -126,8 +124,6 @@ const std::vector<std::pair<int, int>>& Graph::neighbors(int id) const {
     auto it = adj.find(id);
     return (it != adj.end()) ? it->second : empty;
 }
-
-// --------------------- Nearest Node by Euclidean Distance ---------------------
 
 int Graph::nearest_node(double lat, double lon) const {
     double best_dist = std::numeric_limits<double>::max();

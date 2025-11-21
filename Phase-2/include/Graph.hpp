@@ -9,13 +9,13 @@
 #include "Edge.hpp"
 
 class Graph {
-private:
+public:
     std::unordered_map<int, Node> nodes;          
     std::unordered_map<int, Edge> edges;           
     std::unordered_map<int, std::vector<std::pair<int, int>>> adj;
     std::unordered_map<int, Edge> history;        
 
-public:
+
     Graph() = default;
 
     void from_json(const nlohmann::json& filename);

@@ -7,7 +7,7 @@ using json = nlohmann::json;
 
 json QueryProcessor::process( const json& ev) {
     json out;
-
+    out["id"]=ev["id"];
     std::string type = ev["type"];
 
     if (type == "remove_edge") {
@@ -26,7 +26,6 @@ json QueryProcessor::process( const json& ev) {
     }
 
     if (type == "shortest_path") {
-        int qid = ev["id"];
         int src = ev["source"];
         int tgt = ev["target"];
         std::string mode = ev["mode"];
@@ -50,7 +49,6 @@ json QueryProcessor::process( const json& ev) {
         else
             res = sp_solver.shortest_path_time(src, tgt, cons, 0.0);
 
-        out["id"] = qid;
         out["possible"] = res.possible;
         if (res.possible) {
             if (mode == "distance") out["minimum_distance"] = res.cost;
@@ -61,7 +59,6 @@ json QueryProcessor::process( const json& ev) {
     }
 
     if (type == "knn") {
-        int qid = ev["id"];
         std::string poi = ev["poi"];
         double lat = ev["query_point"]["lat"];
         double lon = ev["query_point"]["lon"];
@@ -74,7 +71,6 @@ json QueryProcessor::process( const json& ev) {
         else
             nodes = knn_solver.knn_shortest_path(poi, lat, lon, k);
 
-        out["id"] = qid;
         out["nodes"] = nodes;
         return out;
     }
